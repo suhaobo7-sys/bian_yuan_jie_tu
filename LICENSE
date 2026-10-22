@@ -19,11 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-附注（仅为本仓库特殊情况说明，不影响上方 MIT 许可证效力）：
-
-- `app/src/main/res/font/zpix.ttf` 为第三方「Zpix 最像素」字体，其授权条款独立于本许可证：
-  个人使用免费，**商业使用需向字体作者另行取得授权**。
-- 「边缘截图」名称、图标与本许可证无关，可按 MIT 条款随源码一同使用。
