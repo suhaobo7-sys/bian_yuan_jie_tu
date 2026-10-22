@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 贴图右下角的缩放把手：两条斜线，像常见的「拖这里改大小」 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 底衬：半透明深色圆角块，浅色背景上也看得见 -->
+    <path
+        android:fillColor="#CC181A23"
+        android:pathData="M4,10 L10,4 L20,4 L20,14 L14,20 L4,20 Z" />
+
+    <path
+        android:pathData="M8,16 L16,8"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round" />
+
+    <path
+        android:pathData="M12,16 L16,12"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round" />
+</vector>

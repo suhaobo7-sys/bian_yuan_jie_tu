@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  应用快捷方式：长按桌面图标就能看到「截图」。
+
+  另外，小米（HyperOS/MIUI）控制中心的「编辑与排序 → 应用快捷开关」列的就是这类应用快捷方式，
+  加到这里之后就能把它拖到控制中心，不用每次都下拉通知栏找磁贴。
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shot_tile"
+        android:shortcutId="shot"
+        android:shortcutLongLabel="@string/shot_shortcut_long"
+        android:shortcutShortLabel="@string/shot_shortcut_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.suhaobo.edgeshot.ShotActivity"
+            android:targetPackage="com.suhaobo.edgeshot" />
+    </shortcut>
+</shortcuts>

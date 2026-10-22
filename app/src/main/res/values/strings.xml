@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">边缘截图</string>
+
+    <!-- 截图 -->
+    <string name="shot_tile_label">截图</string>
+    <string name="shot_shortcut_short">截图</string>
+    <string name="shot_shortcut_long">截取屏幕（选区 / 长截图 / 贴图）</string>
+    <string name="shot_a11y_label">边缘截图</string>
+    <string name="shot_a11y_desc">用来截图和长截图：静默截屏，长截图时自动滚动页面。只在本机处理，不会读取或上传任何内容。</string>
+    <string name="shot_save">保存</string>
+    <string name="shot_copy">复制</string>
+    <string name="shot_pin">贴图</string>
+    <string name="shot_long">长截图</string>
+    <string name="shot_cancel">取消</string>
+    <string name="shot_paste">粘贴</string>
+    <string name="shot_need_a11y">截图需要先打开「边缘截图」的无障碍服务（只用来截屏和滚动，不读内容）。</string>
+    <string name="shot_need_a11y_13">截图需要先打开「边缘截图」的无障碍服务（只用来截屏和滚动，不读内容）。\n\nAndroid 13 起，手动安装的 App 系统默认不允许开启无障碍服务：请先点下面「应用信息」，在右上角三点菜单里选「允许受限设置」，再回来开启。</string>
+    <string name="shot_open_settings">去打开</string>
+    <string name="shot_open_appinfo">应用信息</string>
+    <string name="shot_saved">已保存到相册</string>
+    <string name="shot_copied">已复制</string>
+    <string name="shot_failed">截图失败</string>
+</resources>

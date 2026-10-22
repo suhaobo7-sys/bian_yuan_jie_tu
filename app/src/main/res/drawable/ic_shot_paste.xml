@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 贴图工具条上的「替换」：一块剪贴板 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M9 1h6v3H9zM5 3h3v2H7v16h10V5h-1V3h3v20H5zM9 9h6v2H9zM9 13h6v2H9z" />
+</vector>

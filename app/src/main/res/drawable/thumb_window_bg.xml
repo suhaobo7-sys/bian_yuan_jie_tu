@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 长截图预览页：整图缩略条上那个「当前看到哪儿」的小框 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#33FFB454" />
+    <stroke
+        android:width="1.5dp"
+        android:color="#FFFFB454" />
+    <corners android:radius="3dp" />
+</shape>

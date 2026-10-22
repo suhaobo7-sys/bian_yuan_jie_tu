@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  边缘截图：独立的 Android 截图工具。
+  只保留截图相关组件（磁贴 / 无障碍 / 选区 / 长截图 / 贴图 / 剪贴板），
+  不带 Capacitor / WebView，所以启动快、安装包也小。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/ShotTheme">
+
+        <!-- 主入口就是截图界面：点图标直接截屏 + 拉选区。
+             exported=true 也是给「应用快捷方式 / 控制中心应用快捷开关」用的。 -->
+        <activity
+            android:name=".ShotActivity"
+            android:theme="@style/ShotTheme"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:launchMode="singleInstance"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|uiMode|density">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- 应用快捷方式（长按图标 → 截图；小米控制中心的「应用快捷开关」也读这里） -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- 截图：快捷设置磁贴 -->
+        <service
+            android:name=".ScreenshotTileService"
+            android:label="@string/shot_tile_label"
+            android:icon="@drawable/ic_shot_tile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- 截图：无障碍服务（静默截屏 + 长截图自动滚动） -->
+        <service
+            android:name=".ShotAccessibilityService"
+            android:label="@string/shot_a11y_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/shot_accessibility" />
+        </service>
+
+        <!-- 截图：长截图结果预览 -->
+        <activity
+            android:name=".LongShotPreviewActivity"
+            android:theme="@style/ShotPreviewTheme"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|uiMode|density" />
+
+        <!-- 贴图：读剪贴板的透明界面（Android 10+ 只有前台能读剪贴板） -->
+        <activity
+            android:name=".ClipboardActivity"
+            android:theme="@style/ShotClipTheme"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:launchMode="singleInstance" />
+
+        <!-- 贴图：把图片钉在屏幕上的前台服务 -->
+        <service
+            android:name=".PinService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="截图贴图：把截图钉在屏幕上，方便对照/复制" />
+        </service>
+
+        <!-- 长截图：手动滑动 + 连续抓帧（前台服务，Android 10+ 的要求） -->
+        <service
+            android:name=".LongShotService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection|specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="长截图：用户自己滑动屏幕时连续抓帧并拼接成长图" />
+        </service>
+
+        <receiver
+            android:name=".LongShotStopReceiver"
+            android:exported="false" />
+    </application>
+
+    <!-- 贴图要用悬浮窗；长截图/贴图期间要有个前台服务保活 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- 老系统（Android 9 及以下）直接往相册目录写文件才要这两个权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+</manifest>

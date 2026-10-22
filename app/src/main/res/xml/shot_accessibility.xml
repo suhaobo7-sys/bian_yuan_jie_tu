@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  截图用的无障碍服务配置：
+  只申请「截屏」和「执行手势」两件事，不读取窗口内容、不监听文字。
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canPerformGestures="true"
+    android:canTakeScreenshot="true"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/shot_a11y_desc"
+    android:notificationTimeout="100"
+    android:summary="@string/shot_a11y_label" />

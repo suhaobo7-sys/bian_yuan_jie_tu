@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  截图选区界面：整屏压暗 + 拖拽选区 + 选区旁边的工具条
+  （界面本身尽量简单，像 Snipaste 一样：只有选框、尺寸和几个按钮）
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shot_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <com.suhaobo.edgeshot.ShotSelectionView
+        android:id="@+id/shot_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 顶部提示（有选区后就藏起来） -->
+    <TextView
+        android:id="@+id/shot_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/shot_toolbar_bg"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:textColor="#E8E6DF"
+        android:textSize="12sp"
+        android:text="拖动选择区域 · 拖边角调整" />
+
+    <!-- 长截图进行中的提示（点一下停止） -->
+    <TextView
+        android:id="@+id/shot_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/shot_toolbar_bg"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textColor="#FFB454"
+        android:textSize="13sp"
+        android:text="正在长截图…"
+        android:visibility="gone" />
+
+    <!-- 工具条：贴在选区旁边，位置由代码算 -->
+    <LinearLayout
+        android:id="@+id/shot_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/shot_toolbar_bg"
+        android:padding="4dp"
+        android:visibility="gone">
+
+        <!-- 只留六个：保存 / 贴图 / 长截图 / 复制 / 粘贴 / 取消 -->
+
+        <ImageButton
+            android:id="@+id/shot_btn_save"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shot_btn_bg"
+            android:contentDescription="@string/shot_save"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shot_save"
+            android:tint="#FFB454" />
+
+        <ImageButton
+            android:id="@+id/shot_btn_pin"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shot_btn_bg"
+            android:contentDescription="@string/shot_pin"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shot_pin"
+            android:tint="#7EC8E3" />
+
+        <ImageButton
+            android:id="@+id/shot_btn_long"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shot_btn_bg"
+            android:contentDescription="@string/shot_long"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shot_long"
+            android:tint="#9AD3A8" />
+
+        <ImageButton
+            android:id="@+id/shot_btn_copy"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shot_btn_bg"
+            android:contentDescription="@string/shot_copy"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shot_copy"
+            android:tint="#E8E6DF" />
+
+        <ImageButton
+            android:id="@+id/shot_btn_paste"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shot_btn_bg"
+            android:contentDescription="@string/shot_paste"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shot_paste"
+            android:tint="#E8E6DF" />
+
+        <ImageButton
+            android:id="@+id/shot_btn_close"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shot_btn_bg"
+            android:contentDescription="@string/shot_cancel"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shot_close"
+            android:tint="#FF6B6B" />
+    </LinearLayout>
+</FrameLayout>
