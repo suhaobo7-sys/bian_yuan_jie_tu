@@ -73,6 +73,24 @@ JAVA_HOME="<JDK 21 路径>" ./gradlew.bat assembleDebug
 - AGP 8.7.2 / Gradle 8.11.1 / compileSdk 35 / minSdk 23
 - 版本号在 `app/build.gradle` 里改（`versionName` + `versionCode`）
 
+## 如何贡献
+
+发现 bug 或想改进，欢迎两种方式：
+
+1. **只反馈问题**：仓库页 → **Issues** → New issue，写清「现象 + 复现步骤」即可；
+2. **直接改代码**：点右上角 **Fork** 把仓库复制到自己账号 → clone 到本地改代码 → push 到
+   **自己的 fork** → 回到本仓库点 **Compare & pull request** 发起合并请求。仓库主人审核通过
+   后就会合并进主线。
+
+> 没有 push 权限的人无法直接改本仓库，所有改动都会经过仓库主人审核。
+
+## 许可证
+
+本项目以 [MIT License](./LICENSE) 开源——可以自由使用、修改、二次分发（包括商用），只需保留版权声明。
+
+注意：`app/src/main/res/font/zpix.ttf`（Zpix 最像素字体）为第三方字体，授权条款独立于 MIT，
+**个人使用免费、商业使用需向字体作者另行取得授权**。
+
 ## 目录
 
 ```
